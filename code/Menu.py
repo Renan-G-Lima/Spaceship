@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-class Game:
-    def __init__(self):
-        self.screen = None
+class Menu:
+    def __init__(self, screen):
+        self.screen = screen
 
     def run(self, ):
         pass

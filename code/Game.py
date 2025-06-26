@@ -1,8 +1,7 @@
 import pygame as pg
 
 from code.Menu import Menu
-from code.Const import WIN_WIDTH, WIN_HEIGHT
-
+from code.Const import WIN_WIDTH, WIN_HEIGHT, MENU_OPTION
 
 class Game:
     def __init__(self):
@@ -13,6 +12,10 @@ class Game:
 
         while True:
             menu = Menu(self.screen)
-            menu.run()
+            menu_return = menu.run()
 
-
+            if menu_return == MENU_OPTION[0]:
+                pass
+            elif menu_return == MENU_OPTION[4]:
+                pg.quit()  # close the game screen
+                quit()  # end game

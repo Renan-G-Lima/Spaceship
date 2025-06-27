@@ -39,16 +39,16 @@ class Menu:
 
                 # movimenta o menu.
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pg.K_DOWN:  # seta pra baixo
+                    if event.key == pg.K_DOWN:  # seta para baixo
                         if menu_opinion < len(MENU_OPTION) - 1:
                             menu_opinion += 1
                         else:
                             menu_opinion = 4
-                    if event.key == pg.K_UP:  # seta pra cima
+                    if event.key == pg.K_UP:  # seta para cima
                         if menu_opinion > 0:
                             menu_opinion -= 1
 
-                    if event.key == pg.K_RETURN: #entrar
+                    if event.key == pg.K_RETURN:  # entrar
                         return MENU_OPTION[menu_opinion]
 
                 pg.display.flip()

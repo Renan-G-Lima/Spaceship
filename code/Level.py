@@ -1,10 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import random
+
 import pygame as pg
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.Const import COLOR_PURPLE, WIN_HEIGHT
+from code.Const import COLOR_PURPLE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_SHIP
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 
@@ -16,7 +18,11 @@ class Level:
         self.mode_game = mode_game  # modo de jogo do menu
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('level1'))
+        self.entity_list.append(EntityFactory.get_entity('Player1'))
         self.timeout = 20000  # 20s
+        if mode_game in [MENU_OPTION[1], MENU_OPTION[2]]:
+            self.entity_list.append(EntityFactory.get_entity('Player2'))
+        pg.time.set_timer(EVENT_ENEMY, SPAWN_SHIP)
 
     def run(self, ):
         pg.mixer_music.load(f'./assets/backgroundmusic_lvl1.wav')
@@ -31,6 +37,9 @@ class Level:
                 if event.type == pg.QUIT:
                     pg.quit()
                     quit()  # sai da janela
+                if event.type == EVENT_ENEMY:
+                    choice = random.choice(('Enemy1', 'Enemy2')) #randomiza o spawn das naves inimigas
+                    self.entity_list.append(EntityFactory.get_entity(choice))
 
             # texto do level
             self.level_text(20, f'{self.name} - Timeout: {self.timeout / 1000 :.1f}s', COLOR_PURPLE, (10, 5))

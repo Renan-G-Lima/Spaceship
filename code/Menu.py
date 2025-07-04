@@ -11,7 +11,7 @@ from code.Const import WIN_WIDTH
 class Menu:
     def __init__(self, screen):
         self.screen = screen
-        self.surf = pg.image.load('./assets/MenuInicial.png').convert_alpha() #convert_alpha otimiza a img png
+        self.surf = pg.image.load('./assets/bgimg.png').convert_alpha()  # convert_alpha otimiza a img png
         self.rectangle = self.surf.get_rect(left=0, top=0)
 
     def run(self, ):
